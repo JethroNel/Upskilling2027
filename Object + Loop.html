@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Objects and Loops</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            color: #174a7e;
+        }
+
+        .student {
+            background: #e8f2fc;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0d4777;
+        }
+
+        #output {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>JavaScript Objects and Loops</h1>
+
+    <h2>Student Management System</h2>
+
+    <p>Click the buttons to see how JavaScript loops work.</p>
+
+    <button onclick="displayStudents()">
+        Display All Students
+    </button>
+
+    <button onclick="displayStudentsForEach()">
+        Display Using forEach
+    </button>
+
+    <button onclick="checkResults()">
+        Check Student Results
+    </button>
+
+    <button onclick="countStudents()">
+        Count Students
+    </button>
+
+    <div id="output"></div>
+
+</div>
+
+<script>
+
+    // =====================================
+    // STEP 1: CREATE STUDENT OBJECTS
+    // =====================================
+
+    const student1 = {
+        name: "Tshepo",
+        age: 36,
+        course: "JavaScript",
+        mark: 85
+    };
+
+    const student2 = {
+        name: "Arnold",
+        age: 36,
+        course: "HTML and CSS",
+        mark: 72
+    };
+
+    const student3 = {
+        name: "Jethro",
+        age: 41,
+        course: "React",
+        mark: 49
+    };
+
+    const student4 = {
+        name: "Barend",
+        age: 35,
+        course: "JavaScript",
+        mark: 90
+    };
+
+
+    // =====================================
+    // STEP 2: STORE OBJECTS IN AN ARRAY
+    // =====================================
+
+    const students = [
+        student1,
+        student2,
+        student3,
+        student4
+    ];
+
+
+    // =====================================
+    // STEP 3: USE A FOR LOOP
+    // =====================================
+
+    function displayStudents() {
+
+        let output = "<h2>All Students</h2>";
+
+        for (let i = 0; i < students.length; i++) {
+
+            output += `
+                <div class="student">
+                    <strong>Student ${i + 1}</strong><br>
+                    Name: ${students[i].name}<br>
+                    Age: ${students[i].age}<br>
+                    Course: ${students[i].course}<br>
+                    Mark: ${students[i].mark}
+                </div>
+            `;
+        }
+
+        document.getElementById("output").innerHTML = output;
+    }
+
+
+    // =====================================
+    // STEP 4: USE FOR EACH LOOP
+    // =====================================
+
+    function displayStudentsForEach() {
+
+        let output = "<h2>Students Using forEach()</h2>";
+
+        students.forEach(function(student, index) {
+
+            output += `
+                <div class="student">
+                    Student ${index + 1}<br>
+                    Name: ${student.name}<br>
+                    Course: ${student.course}
+                </div>
+            `;
+
+        });
+
+        document.getElementById("output").innerHTML = output;
+    }
+
+
+    // =====================================
+    // STEP 5: CHECK STUDENT RESULTS
+    // =====================================
+
+    function checkResults() {
+
+        let output = "<h2>Student Results</h2>";
+
+        for (let i = 0; i < students.length; i++) {
+
+            let result;
+
+            if (students[i].mark >= 50) {
+                result = "PASSED";
+            } else {
+                result = "FAILED";
+            }
+
+            output += `
+                <div class="student">
+                    Name: ${students[i].name}<br>
+                    Mark: ${students[i].mark}%<br>
+                    Result: ${result}
+                </div>
+            `;
+        }
+
+        document.getElementById("output").innerHTML = output;
+    }
+
+
+    // =====================================
+    // STEP 6: USE A WHILE LOOP
+    // =====================================
+
+    function countStudents() {
+
+        let i = 0;
+
+        let output = "<h2>Counting Students</h2>";
+
+        while (i < students.length) {
+
+            output += "Student number " + (i + 1) +
+                      ": " + students[i].name + "<br>";
+
+            i++;
+        }
+
+        output += "<br>Total students: " + students.length;
+
+        document.getElementById("output").innerHTML = output;
+    }
+
+</script>
+
+</body>
+</html>

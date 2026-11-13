@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Data Types Explorer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        header {
+            background-color: #174a7e;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #174a7e;
+        }
+
+        .intro {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #1769aa;
+        }
+
+        button {
+            background-color: #1769aa;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0d4777;
+        }
+
+        .output {
+            background: #172b4d;
+            color: #b8f5c8;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .clear-button {
+            background-color: #b83232;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>JavaScript Data Types Explorer</h1>
+        <p>Beginner JavaScript Practical Project</p>
+    </header>
+
+    <div class="intro">
+        <h2>Welcome!</h2>
+
+        <p>
+            JavaScript uses different data types to store information.
+            Click the buttons below to explore how each data type works.
+        </p>
+
+        <p>
+            You will explore Numbers, BigInt, Strings, Booleans,
+            Undefined, Null, Symbols, Objects, Arrays and Dates.
+        </p>
+    </div>
+
+
+    <!-- DATA TYPE CARDS -->
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>1. Number</h3>
+            <p>Stores numerical values.</p>
+            <button onclick="showNumbers()">Explore Numbers</button>
+        </div>
+
+        <div class="card">
+            <h3>2. BigInt</h3>
+            <p>Stores very large whole numbers.</p>
+            <button onclick="showBigInt()">Explore BigInt</button>
+        </div>
+
+        <div class="card">
+            <h3>3. String</h3>
+            <p>Stores text information.</p>
+            <button onclick="showStrings()">Explore Strings</button>
+        </div>
+
+        <div class="card">
+            <h3>4. Boolean</h3>
+            <p>Stores true or false values.</p>
+            <button onclick="showBooleans()">Explore Boolean</button>
+        </div>
+
+        <div class="card">
+            <h3>5. Undefined</h3>
+            <p>A variable declared without a value.</p>
+            <button onclick="showUndefined()">Explore Undefined</button>
+        </div>
+
+        <div class="card">
+            <h3>6. Null</h3>
+            <p>Represents an intentionally empty value.</p>
+            <button onclick="showNull()">Explore Null</button>
+        </div>
+
+        <div class="card">
+            <h3>7. Symbol</h3>
+            <p>Creates unique identifiers.</p>
+            <button onclick="showSymbols()">Explore Symbols</button>
+        </div>
+
+        <div class="card">
+            <h3>8. Object</h3>
+            <p>Stores related information together.</p>
+            <button onclick="showObjects()">Explore Objects</button>
+        </div>
+
+        <div class="card">
+            <h3>9. Array</h3>
+            <p>Stores multiple values in a list.</p>
+            <button onclick="showArrays()">Explore Arrays</button>
+        </div>
+
+        <div class="card">
+            <h3>10. Date</h3>
+            <p>Stores date and time information.</p>
+            <button onclick="showDate()">Explore Date</button>
+        </div>
+
+    </div>
+
+
+    <!-- OUTPUT SECTION -->
+
+    <h2>JavaScript Output</h2>
+
+    <div class="output" id="output">
+        Welcome! Select a data type above to see how it works.
+    </div>
+
+    <button class="clear-button" onclick="clearOutput()">
+        Clear Output
+    </button>
+
+
+    <footer>
+        <p>SABTEC | JavaScript Beginner Upskilling</p>
+    </footer>
+
+</div>
+
+
+<script>
+
+    // =====================================
+    // 1. NUMBER
+    // =====================================
+
+    let length = 16;
+    let weight = 7.5;
+
+    function showNumbers() {
+
+        document.getElementById("output").textContent =
+            "NUMBER DATA TYPE\n\n" +
+            "Length: " + length + "\n" +
+            "Weight: " + weight + "\n\n" +
+            "Type of length: " + typeof length + "\n" +
+            "Type of weight: " + typeof weight + "\n\n" +
+            "Addition: " + (length + weight);
+    }
+
+
+    // =====================================
+    // 2. BIGINT
+    // =====================================
+
+    let x = 1234567890123456789012345n;
+
+    let y = BigInt("1234567890123456789012345");
+
+    function showBigInt() {
+
+        document.getElementById("output").textContent =
+            "BIGINT DATA TYPE\n\n" +
+            "First BigInt: " + x.toString() + "\n" +
+            "Second BigInt: " + y.toString() + "\n\n" +
+            "Type of x: " + typeof x + "\n\n" +
+            "BigInt addition: " + (x + y).toString();
+    }
+
+
+    // =====================================
+    // 3. STRINGS
+    // =====================================
+
+    let color = "Yellow";
+
+    let lastName = "Johnson";
+
+    function showStrings() {
+
+        document.getElementById("output").textContent =
+            "STRING DATA TYPE\n\n" +
+            "Color: " + color + "\n" +
+            "Last Name: " + lastName + "\n\n" +
+            "Type of color: " + typeof color + "\n\n" +
+            "Combined text: " + color + " " + lastName;
+    }
+
+
+    // =====================================
+    // 4. BOOLEAN
+    // =====================================
+
+    let isOpen = true;
+
+    let isEmpty = false;
+
+    function showBooleans() {
+
+        document.getElementById("output").textContent =
+            "BOOLEAN DATA TYPE\n\n" +
+            "Is Open: " + isOpen + "\n" +
+            "Is Empty: " + isEmpty + "\n\n" +
+            "Type of isOpen: " + typeof isOpen + "\n\n" +
+            "Is the door open? " +
+            (isOpen ? "YES" : "NO");
+    }
+
+
+    // =====================================
+    // 5. UNDEFINED
+    // =====================================
+
+    let car;
+
+    let house;
+
+    function showUndefined() {
+
+        document.getElementById("output").textContent =
+            "UNDEFINED DATA TYPE\n\n" +
+            "Car: " + car + "\n" +
+            "House: " + house + "\n\n" +
+            "Type of car: " + typeof car + "\n\n" +
+            "These variables exist but have not been assigned a value.";
+    }
+
+
+    // =====================================
+    // 6. NULL
+    // =====================================
+
+    let user = null;
+
+    let order = null;
+
+    function showNull() {
+
+        document.getElementById("output").textContent =
+            "NULL DATA TYPE\n\n" +
+            "User: " + user + "\n" +
+            "Order: " + order + "\n\n" +
+            "Type of user: " + typeof user + "\n\n" +
+            "Important: typeof null returns object in JavaScript.\n" +
+            "However, null represents an intentional empty value.";
+    }
+
+
+    // =====================================
+    // 7. SYMBOL
+    // =====================================
+
+    const id1 = Symbol("ID");
+
+    const id2 = Symbol("ID");
+
+    function showSymbols() {
+
+        document.getElementById("output").textContent =
+            "SYMBOL DATA TYPE\n\n" +
+            "First Symbol: " + id1.toString() + "\n" +
+            "Second Symbol: " + id2.toString() + "\n\n" +
+            "Type of id1: " + typeof id1 + "\n\n" +
+            "Are both symbols equal? " + (id1 === id2) +
+            "\n\nSymbols are always unique, even when their descriptions match.";
+    }
+
+
+    // =====================================
+    // 8. OBJECT
+    // =====================================
+
+    const person = {
+        firstName: "John",
+        lastName: "Doe"
+    };
+
+    function showObjects() {
+
+        document.getElementById("output").textContent =
+            "OBJECT DATA TYPE\n\n" +
+            "First Name: " + person.firstName + "\n" +
+            "Last Name: " + person.lastName + "\n\n" +
+            "Type of person: " + typeof person + "\n\n" +
+            "Full Name: " +
+            person.firstName + " " + person.lastName;
+    }
+
+
+    // =====================================
+    // 9. ARRAY
+    // =====================================
+
+    const cars = ["Saab", "Volvo", "BMW"];
+
+    function showArrays() {
+
+        let result = "ARRAY DATA TYPE\n\n";
+
+        for (let i = 0; i < cars.length; i++) {
+
+            result += "Car " + (i + 1) + ": " +
+                      cars[i] + "\n";
+        }
+
+        result += "\nTotal cars: " + cars.length;
+        result += "\nType of cars: " + typeof cars;
+
+        document.getElementById("output").textContent = result;
+    }
+
+
+    // =====================================
+    // 10. DATE
+    // =====================================
+
+    const date = new Date("2022-03-25");
+
+    function showDate() {
+
+        document.getElementById("output").textContent =
+            "DATE DATA TYPE\n\n" +
+            "Original Date: " + date.toDateString() + "\n\n" +
+            "Year: " + date.getFullYear() + "\n" +
+            "Month: " + (date.getMonth() + 1) + "\n" +
+            "Day: " + date.getDate() + "\n\n" +
+            "Type of date: " + typeof date;
+    }
+
+
+    // =====================================
+    // CLEAR OUTPUT
+    // =====================================
+
+    function clearOutput() {
+
+        document.getElementById("output").textContent =
+            "Output cleared. Select another data type.";
+    }
+
+</script>
+
+</body>
+</html>

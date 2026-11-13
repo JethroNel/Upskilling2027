@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Object Exercise</title>
+</head>
+
+<body>
+
+    <h1>My First JavaScript Object</h1>
+
+    <h2>Student Information</h2>
+
+    <p id="studentDetails"></p>
+
+    <button onclick="showStudent()">
+        Show Student
+    </button>
+
+    <button onclick="changeStudent()">
+        Change Student Name
+    </button>
+
+    <script>
+
+        // Create a student object
+
+        const student = {
+            name: "David",
+            age: 22,
+            course: "Web-development",
+
+            introduce: function() {
+                return "My name is " + this.name +
+                       " and I am studying " + this.course;
+            }
+        };
+
+
+        // Function to display student information
+
+        function showStudent() {
+
+            document.getElementById("studentDetails").innerHTML =
+                "Name: " + student.name + "<br>" +
+                "Age: " + student.age + "<br>" +
+                "Course: " + student.course + "<br><br>" +
+                student.introduce();
+        }
+
+
+        // Function to change the student's name
+
+        function changeStudent() {
+
+            student.name = "Michael";
+
+            showStudent();
+        }
+
+    </script>
+
+</body>
+</html>

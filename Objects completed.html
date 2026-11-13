@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Objects Tutorial - SABTEC</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #174a7e;
+            text-align: center;
+        }
+
+        h2 {
+            color: #174a7e;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        .employee-card {
+            background: #eef5fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .employee-card p {
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #1769aa;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d4777;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 90%;
+            max-width: 350px;
+        }
+
+        #output {
+            background: #f1f1f1;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>JavaScript Objects Tutorial</h1>
+    <p style="text-align:center;">
+        SABTEC Beginner Developer Upskilling
+    </p>
+
+    <div class="section">
+        <h2>1. What is a JavaScript Object?</h2>
+
+        <p>
+            An object stores related information using
+            properties and values.
+        </p>
+
+        <p>
+            Example: An employee can have a name, age,
+            department and position.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>2. Employee Management System</h2>
+
+        <div class="employee-card">
+            <h3>Employee Details</h3>
+
+            <p><strong>Name:</strong> <span id="employeeName"></span></p>
+            <p><strong>Age:</strong> <span id="employeeAge"></span></p>
+            <p><strong>Department:</strong> <span id="employeeDepartment"></span></p>
+            <p><strong>Position:</strong> <span id="employeePosition"></span></p>
+            <p><strong>Email:</strong> <span id="employeeEmail"></span></p>
+            <p><strong>Salary:</strong> R<span id="employeeSalary"></span></p>
+        </div>
+
+        <button onclick="showEmployee()">
+            Show Employee
+        </button>
+
+        <button onclick="changeDepartment()">
+            Change Department
+        </button>
+
+        <button onclick="welcomeEmployee()">
+            Welcome Employee
+        </button>
+
+        <button onclick="changePosition()">
+            Promote Employee
+        </button>
+    </div>
+
+    <div class="section">
+        <h2>3. Add a New Employee</h2>
+
+        <input type="text" id="newName" placeholder="Employee Name">
+        <br>
+
+        <input type="number" id="newAge" placeholder="Employee Age">
+        <br>
+
+        <input type="text" id="newDepartment" placeholder="Department">
+        <br>
+
+        <input type="text" id="newPosition" placeholder="Position">
+        <br>
+
+        <button onclick="addEmployee()">
+            Add Employee
+        </button>
+
+        <div id="employeeList"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. JavaScript Output</h2>
+
+        <div id="output">
+            Click one of the buttons above to see the result.
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    // =====================================
+    // 1. CREATE A JAVASCRIPT OBJECT
+    // =====================================
+
+    const employee = {
+        name: "John Smith",
+        age: 28,
+        department: "IT",
+        position: "Junior Developer",
+        email: "john@sabtec.co.za",
+        salary: 25000,
+
+        // Object method
+        introduce: function() {
+            return "Hello, my name is " + this.name +
+                   " and I work in " + this.department + ".";
+        },
+
+        // Another object method
+        displayDetails: function() {
+            return this.name + " is a " +
+                   this.position + " in " +
+                   this.department + ".";
+        }
+    };
+
+
+    // =====================================
+    // 2. ACCESS OBJECT PROPERTIES
+    // =====================================
+
+    console.log(employee.name);
+    console.log(employee.age);
+    console.log(employee.department);
+
+
+    // =====================================
+    // 3. UPDATE OBJECT PROPERTIES
+    // =====================================
+
+    // Example:
+    // employee.department = "Development";
+
+
+    // =====================================
+    // 4. ADD AND DELETE OBJECT PROPERTIES
+    // =====================================
+
+    // Add a new property:
+    employee.location = "Durban";
+
+    // Delete a property:
+    // delete employee.location;
+
+
+    // =====================================
+    // 5. NESTED OBJECT
+    // =====================================
+
+    employee.contact = {
+        phone: "0123456789",
+        city: "Durban"
+    };
+
+    console.log(employee.contact.phone);
+
+
+    // =====================================
+    // 6. ARRAY OF OBJECTS
+    // =====================================
+
+    const employees = [
+        employee,
+
+        {
+            name: "Sarah Jones",
+            age: 25,
+            department: "Finance",
+            position: "Finance Assistant"
+        },
+
+        {
+            name: "David Brown",
+            age: 32,
+            department: "HR",
+            position: "HR Manager"
+        }
+    ];
+
+
+    // =====================================
+    // 7. OBJECT DESTRUCTURING
+    // =====================================
+
+    const { name, age, department } = employee;
+
+    console.log("Employee name:", name);
+    console.log("Employee age:", age);
+    console.log("Employee department:", department);
+
+
+    // =====================================
+    // 8. DISPLAY EMPLOYEE INFORMATION
+    // =====================================
+
+    function showEmployee() {
+
+        document.getElementById("employeeName").textContent =
+            employee.name;
+
+        document.getElementById("employeeAge").textContent =
+            employee.age;
+
+        document.getElementById("employeeDepartment").textContent =
+            employee.department;
+
+        document.getElementById("employeePosition").textContent =
+            employee.position;
+
+        document.getElementById("employeeEmail").textContent =
+            employee.email;
+
+        document.getElementById("employeeSalary").textContent =
+            employee.salary.toLocaleString("en-ZA");
+
+        document.getElementById("output").textContent =
+            JSON.stringify(employee, null, 4);
+    }
+
+
+    // =====================================
+    // 9. CHANGE EMPLOYEE DEPARTMENT
+    // =====================================
+
+    function changeDepartment() {
+
+        employee.department = "Software Development";
+
+        showEmployee();
+
+        document.getElementById("output").textContent =
+            "Employee department successfully changed to " +
+            employee.department;
+    }
+
+
+    // =====================================
+    // 10. CALL AN OBJECT METHOD
+    // =====================================
+
+    function welcomeEmployee() {
+
+        const message = employee.introduce();
+
+        document.getElementById("output").textContent =
+            message;
+    }
+
+
+    // =====================================
+    // 11. CHANGE EMPLOYEE POSITION
+    // =====================================
+
+    function changePosition() {
+
+        employee.position = "Senior Developer";
+        employee.salary = 35000;
+
+        showEmployee();
+
+        document.getElementById("output").textContent =
+            employee.name + " has been promoted to " +
+            employee.position + ". New salary: R" +
+            employee.salary.toLocaleString("en-ZA");
+    }
+
+
+    // =====================================
+    // 12. ADD A NEW EMPLOYEE OBJECT
+    // =====================================
+
+    function addEmployee() {
+
+        const newName =
+            document.getElementById("newName").value.trim();
+
+        const newAge =
+            Number(document.getElementById("newAge").value);
+
+        const newDepartment =
+            document.getElementById("newDepartment").value.trim();
+
+        const newPosition =
+            document.getElementById("newPosition").value.trim();
+
+        if (!newName || !newAge || !newDepartment || !newPosition) {
+
+            alert("Please complete all employee fields.");
+            return;
+        }
+
+        if (newAge < 1) {
+            alert("Please enter a valid age.");
+            return;
+        }
+
+        // Create a new object
+        const newEmployee = {
+            name: newName,
+            age: newAge,
+            department: newDepartment,
+            position: newPosition
+        };
+
+        // Add object to employees array
+        employees.push(newEmployee);
+
+        // Display updated employee list
+        displayEmployees();
+
+        document.getElementById("output").textContent =
+            "New employee added successfully: " + newEmployee.name;
+
+        // Clear input fields
+        document.getElementById("newName").value = "";
+        document.getElementById("newAge").value = "";
+        document.getElementById("newDepartment").value = "";
+        document.getElementById("newPosition").value = "";
+    }
+
+
+    // =====================================
+    // 13. DISPLAY ALL EMPLOYEES
+    // =====================================
+
+    function displayEmployees() {
+
+        let employeeHTML = "<h3>Employee List</h3>";
+
+        employees.forEach(function(emp, index) {
+
+            employeeHTML += `
+                <div class="employee-card">
+                    <strong>Employee ${index + 1}</strong>
+                    <p>Name: ${escapeHTML(emp.name)}</p>
+                    <p>Age: ${emp.age}</p>
+                    <p>Department: ${escapeHTML(emp.department)}</p>
+                    <p>Position: ${escapeHTML(emp.position)}</p>
+                </div>
+            `;
+        });
+
+        document.getElementById("employeeList").innerHTML =
+            employeeHTML;
+    }
+
+
+    // =====================================
+    // 14. SAFELY DISPLAY USER-ENTERED TEXT
+    // =====================================
+
+    function escapeHTML(value) {
+
+        return String(value).replace(/[&<>"']/g, function(character) {
+
+            const replacements = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            };
+
+            return replacements[character];
+        });
+    }
+
+
+    // =====================================
+    // 15. INITIAL PAGE LOAD
+    // =====================================
+
+    showEmployee();
+    displayEmployees();
+
+</script>
+
+</body>
+</html>
